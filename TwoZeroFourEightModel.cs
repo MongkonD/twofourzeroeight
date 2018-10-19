@@ -12,6 +12,7 @@ namespace twozerofoureight
         protected int[,] board;
         protected Random rand;
         protected int[] range;
+        int Score = 2;
 
         public TwoZeroFourEightModel() : this(4)
         {
@@ -38,6 +39,21 @@ namespace twozerofoureight
         public int[,] GetBoard()
         {
             return board;
+        }
+
+        public int GetScore()
+        {
+
+            Score += 2;
+            return Score;
+        }
+
+        private bool GameOver()
+        {
+            if(PerformDown() == false)
+            {
+                
+            }
         }
 
         private void AddRandomSlot()

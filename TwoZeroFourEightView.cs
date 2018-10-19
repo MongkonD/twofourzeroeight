@@ -28,6 +28,8 @@ namespace twozerofoureight
         public void Notify(Model m)
         {
             UpdateBoard(((TwoZeroFourEightModel)m).GetBoard());
+            ScoreBox.Text = ((TwoZeroFourEightModel)m).GetScore().ToString();
+
         }
 
         private void UpdateTile(Label l, int i)
@@ -98,6 +100,34 @@ namespace twozerofoureight
         {
             controller.ActionPerformed(TwoZeroFourEightController.DOWN);
         }
-
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            //keyData equals Keys.Up (if up arrow is pressed)
+            //do the same as in btnUp_Click
+            if (keyData == Keys.Up)
+                {
+                    controller.ActionPerformed(TwoZeroFourEightController.UP);
+                    return true;
+                }
+            else if (keyData == Keys.Down)
+                {   
+                    controller.ActionPerformed(TwoZeroFourEightController.DOWN);
+                    return true;
+                }
+            else if (keyData == Keys.Left)
+                {   
+                    controller.ActionPerformed(TwoZeroFourEightController.LEFT);
+                    return true;
+                }
+            else if (keyData == Keys.Right)
+                {
+                    controller.ActionPerformed(TwoZeroFourEightController.RIGHT);
+                    return true;
+                }
+            else {
+                    return false;
+                 }
+            return base.ProcessCmdKey(ref msg, keyData);
+        }
     }
 }
